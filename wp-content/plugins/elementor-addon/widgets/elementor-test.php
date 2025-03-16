@@ -105,18 +105,44 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 			]
 		);
 
+		// Data Control - Textarea 
+		
+		$this->add_control(
+			'description',
+			[
+				'label' => esc_html__( 'Description', 'elementor-heading' ),
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'rows' => 10,
+				'placeholder' => esc_html__( 'Type your description here', 'elementor-heading' ),
+				'separator'		=> 'before', 
+			]
+		);
 
+		// Data Control - WYSIWYG
+		$this->add_control(
+			'item_description',
+			[
+				'label' => esc_html__( 'Description', 'elementor-addon' ),
+				'type' => \Elementor\Controls_Manager::WYSIWYG,
+				'default' => esc_html__( 'Default description', 'elementor-addon' ),
+				'placeholder' => esc_html__( 'Type your description here', 'elementor-addon' ),
+			]
+		);
+
+		
 		$this->end_controls_section();
     }
         protected function render() {
             $settings = $this->get_settings_for_display();
             ?>
 			<h3> Show Price: <?php echo $settings['price']; ?>  </h3>
+			<p> <?php echo $settings['item_description']; ?> </p>
 			<?php 
          ?> 
 		<?php if($settings['show_title'] == 'yes'){
 			 ?>
 			 <h3 style="color:<?php echo $settings['color'];?>"> <?php echo $settings['title']; ?> </h3>
+			<p> <?php echo $settings['description'] ?> </p>
 			 <?php
 		} ?>
 		<?php 
