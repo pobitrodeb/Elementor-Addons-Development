@@ -41,6 +41,17 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 			]
 		);
 
+		// Data Control - Hidden 
+		$this->add_control(
+			'hidden',
+			[
+				'type' => \Elementor\Controls_Manager::HIDDEN,
+				'label' => esc_html__( 'View', 'elementor-addon' ),
+				'default' => 'traditional',
+			]
+		);
+
+		
 		$this->end_controls_section();
     }
         protected function render() {
