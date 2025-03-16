@@ -129,7 +129,18 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 			]
 		);
 
-		
+		// Data Control - Code 
+		$this->add_control(
+			'code',
+			[
+				'label' => esc_html__( 'Custom HTML', 'elementor-addon' ),
+				'type' => \Elementor\Controls_Manager::CODE,
+				'language' => 'html',
+				'rows' => 20,
+			]
+		);
+
+
 		$this->end_controls_section();
     }
         protected function render() {
@@ -137,6 +148,8 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
             ?>
 			<h3> Show Price: <?php echo $settings['price']; ?>  </h3>
 			<p> <?php echo $settings['item_description']; ?> </p>
+
+			<?php echo $settings['code']; ?>
 			<?php 
          ?> 
 		<?php if($settings['show_title'] == 'yes'){
