@@ -245,11 +245,11 @@ final class Elementor_Addon_Extension {
 	 */
 	public function init_widgets() {
 
-		// require_once( __DIR__ . '/widgets/elementor-addon.php' );
+		require_once( __DIR__ . '/widgets/elementor-test.php' );
 
-		// // added by EWA - EWA own Register widgets, loading all widget names
+		// added by EWA - EWA own Register widgets, loading all widget names
 
-		// \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Common_Widget() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Test_Widget() );
 
 	}
 
