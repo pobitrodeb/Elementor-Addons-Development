@@ -51,12 +51,43 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 			]
 		);
 
-		
+
+
+		// Data Control - Switcher 
+		$this->add_control(
+			'hidden',
+			[
+				'type' => \Elementor\Controls_Manager::HIDDEN,
+				'label' => esc_html__( 'View', 'elementor-addon' ),
+				'default' => 'traditional',
+			]
+		);
+
+		// Data Control - Switcher 
+		$this->add_control(
+			'show_title',
+			[
+				'label' => esc_html__( 'Show Title ?', 'elementor-addon' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'elementor-addon' ),
+				'label_off' => esc_html__( 'Hide', 'elementor-addon' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+
+
+
 		$this->end_controls_section();
     }
         protected function render() {
             $settings = $this->get_settings_for_display();
-            echo $settings['title'];
-        }
+            // echo $settings['title'];
+         ?> 
+		<?php if($settings['show_title'] == 'yes'){
+			 echo $settings['title'];
+		} ?>
+		<?php 
+		}
     
 }
