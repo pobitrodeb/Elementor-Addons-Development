@@ -76,7 +76,21 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 			]
 		);
 
-
+		// Data Control - Select 
+		$this->add_control(
+			'color',
+			[
+				'label' => esc_html__( 'Heading Color', 'elementor-addon' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'black',
+				'options' => [
+					'green' => esc_html__( 'Green', 'elementor-addon' ),
+					'red'  => esc_html__( 'Red', 'elementor-addon' ),
+					'blue' => esc_html__( 'Blue', 'elementor-addon' ),
+					'yellow' => esc_html__( 'Yellow', 'elementor-addon' ),
+				],
+			]
+		);
 
 		$this->end_controls_section();
     }
@@ -85,7 +99,9 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
             // echo $settings['title'];
          ?> 
 		<?php if($settings['show_title'] == 'yes'){
-			 echo $settings['title'];
+			 ?>
+			 <h3 style="color:<?php echo $settings['color'];?>"> <?php echo $settings['title']; ?> </h3>
+			 <?php
 		} ?>
 		<?php 
 		}
