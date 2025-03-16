@@ -92,11 +92,27 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 			]
 		);
 
+		// Data Control - Number
+		$this->add_control(
+			'price',
+			[
+				'label' => esc_html__( 'Price', 'elementor-addon' ),
+				'type' => \Elementor\Controls_Manager::NUMBER,
+				'min' => 5,
+				'max' => 100,
+				'step' => 5,
+				
+			]
+		);
+
+
 		$this->end_controls_section();
     }
         protected function render() {
             $settings = $this->get_settings_for_display();
-            // echo $settings['title'];
+            ?>
+			<h3> Show Price: <?php echo $settings['price']; ?>  </h3>
+			<?php 
          ?> 
 		<?php if($settings['show_title'] == 'yes'){
 			 ?>
