@@ -140,24 +140,45 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 			]
 		);
 
+		// Data Control - Gallery 
+		$this->add_control(
+			'gallery',
+			[
+				'label' => esc_html__( 'Add Images', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::GALLERY,
+				'show_label' => false,
+				'default' => [],
+			]
+		);
 
 		$this->end_controls_section();
     }
         protected function render() {
             $settings = $this->get_settings_for_display();
-            ?>
-			<h3> Show Price: <?php echo $settings['price']; ?>  </h3>
-			<p> <?php echo $settings['item_description']; ?> </p>
+		?> 
 
-			<?php echo $settings['code']; ?>
-			<?php 
+		<?php 
+			$gallery = $settings['gallery']; 
+			foreach ($gallery as $image){
+				?>
+				<img src="<?php echo $image['url'];?>" alt="">
+				<?php
+			}
+		?> 
+		
+		<h3> Show Price: <?php echo $settings['price']; ?>  </h3>
+		<p> <?php echo $settings['item_description']; ?> </p>
+		<?php echo $settings['code']; ?>
+		<?php 
          ?> 
+
 		<?php if($settings['show_title'] == 'yes'){
 			 ?>
 			 <h3 style="color:<?php echo $settings['color'];?>"> <?php echo $settings['title']; ?> </h3>
 			<p> <?php echo $settings['description'] ?> </p>
 			 <?php
 		} ?>
+
 		<?php 
 		}
     
